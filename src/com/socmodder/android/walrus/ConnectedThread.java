@@ -38,7 +38,7 @@ public class ConnectedThread extends Thread {
     }
 
     public void run(){
-        byte[] buffer = new byte[1024]; // buffer store for the stream
+        byte[] buffer = new byte[256]; // buffer store for the stream
         int bytes; // bytes returned from read()
 
         // Keep listening to the input stream until an exception occurs

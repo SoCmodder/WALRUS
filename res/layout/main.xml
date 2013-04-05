@@ -4,13 +4,9 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <Button android:layout_height="50dp"
-            android:layout_width="200dp"
-            android:text="Find Devices"
-            android:id="@+id/find_devices_button"
-            android:layout_gravity="center"/>
     <Button android:layout_height="75dp"
             android:layout_width="200dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/unlock_button"
             android:text="Unlock"
             android:layout_gravity="center"/>
@@ -19,13 +15,6 @@
             android:id="@+id/lock_button"
             android:layout_gravity="center"
             android:text="Lock"/>
-    <TextView android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:text="Paired Devices:"/>
-    <ListView android:layout_width="fill_parent"
-              android:layout_height="150dp"
-              android:id="@+id/device_listview"
-              android:layout_gravity="center"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:id="@+id/status_textview"

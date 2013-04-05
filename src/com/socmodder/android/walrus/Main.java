@@ -23,6 +23,9 @@ public class Main extends Activity {
     public static final int MESSAGE_DEVICE_NAME = 4;
     public static final int MESSAGE_TOAST = 5;
 
+    //You need to edit this for your particular devices, yo
+    public static String ardAddress = "00:12:04:05:94:18";
+
     //Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
@@ -49,11 +52,11 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Button findDevices = (Button)findViewById(R.id.find_devices_button);
-        findDevices.setVisibility(View.INVISIBLE);
+       // Button findDevices = (Button)findViewById(R.id.find_devices_button);
+        //findDevices.setVisibility(View.INVISIBLE);
         Button UnlockButton = (Button)findViewById(R.id.unlock_button);
         Button LockButton = (Button)findViewById(R.id.lock_button);
-        ListView DeviceListview = (ListView)findViewById(R.id.device_listview);
+        //ListView DeviceListview = (ListView)findViewById(R.id.device_listview);
         status = (ImageView)findViewById(R.id.status_image);
         tStatus = (TextView)findViewById(R.id.status_textview);
         IntentFilter filter1 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
@@ -91,7 +94,7 @@ public class Main extends Activity {
             }
         });
 
-        DeviceListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*DeviceListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Set<BluetoothDevice> pairedDevices = bluetooth.getBondedDevices();
@@ -102,7 +105,7 @@ public class Main extends Activity {
 
                 connectDevice(address);
             }
-        });
+        });   */
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver(){
@@ -136,7 +139,7 @@ public class Main extends Activity {
     private void queryPairedDevices(){
         Set<BluetoothDevice> pairedDevices = bluetooth.getBondedDevices();
         final ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        ListView DeviceListview = (ListView)findViewById(R.id.device_listview);
+        //ListView DeviceListview = (ListView)findViewById(R.id.device_listview);
 
         if(pairedDevices.size() > 0){
             for(BluetoothDevice device : pairedDevices){
@@ -161,7 +164,7 @@ public class Main extends Activity {
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(mReceiver, filter); //Don't forget to unregister during onDestroy
         }
-        DeviceListview.setAdapter(mArrayAdapter);
+       // DeviceListview.setAdapter(mArrayAdapter);
     }
 
     private void connectDevice(String address){
